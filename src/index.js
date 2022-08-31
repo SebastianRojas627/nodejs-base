@@ -1,10 +1,13 @@
 const express = require('express')
+const routes = require('./routes')
 const app = express()
+const cors = require('cors')
 
-app.get('/', (req, res) => {
-    res.send('Hello World')
-})
+app.use(cors())
 
-app.listen(3000, () => {
-    console.log('Happy Codding the app listening on port 3000!')
+app.use(express.json())
+app.use('/api', routes)
+
+app.listen(5000, () => {
+    console.log('Happy Codding the app listening on port 5000!')
 })

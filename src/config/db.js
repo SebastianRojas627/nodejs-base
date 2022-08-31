@@ -1,12 +1,14 @@
+require('dotenv').config()
+
 let mysql = require('mysql')
 
 //TODO change config file to environment variable
 
 let connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: 'Alpha 627',
-    database: 'pokedex'
+    host: process.env.HOST,
+    user: process.env.USER,
+    password: process.env.PSWR,
+    database: process.env.DATABASE
 })
 
 connection.connect(function(err) {
@@ -16,3 +18,13 @@ connection.connect(function(err) {
   
     console.log('Connected to the MySQL server.');
   });
+
+  const pool = mysql.createPool({
+    connectionLimit: 10,
+    host: process.env.HOST,
+    user: process.env.USER,
+    password: process.env.PSWR,
+    database: process.env.DATABASE
+})
+
+module.exports = connection
