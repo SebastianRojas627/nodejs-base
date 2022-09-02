@@ -9,9 +9,11 @@ function App() {
 
 const [name, setName] = useState('test')
 
-  return (
-    <TrainerForm></TrainerForm>
-  );
+  // return (
+  //   <TrainerForm></TrainerForm>
+  // );
+
+  return <><h1>Estoy roto</h1></>
 }
 
 export default App;
