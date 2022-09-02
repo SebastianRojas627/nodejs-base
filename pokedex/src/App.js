@@ -1,19 +1,21 @@
-import { useState } from 'react';
-import './App.css';
-import {MyComponent} from './components/MyComponent';
-import { TrainerForm } from "./components/TrainerForm"
-
-
+import "./App.css";
+import React, { useState, useEffect } from "react";
+import { PokeCard } from "./components/PokeCard";
+import { MyComponent } from "./components/MyComponent";
+import API from "./config/api";
 
 function App() {
+  const [trainer, setTrainer] = useState();
+  const getTrainerId = async () => {
+    const trainerReponse = await API.get(`/trainer/1`);
+    const { data } = trainerReponse;
+    setTrainer(data.trainer[0]);
+  };
+  useEffect(() => {
+    getTrainerId();
+  }, []);
 
-const [name, setName] = useState('test')
-
-  // return (
-  //   <TrainerForm></TrainerForm>
-  // );
-
-  return <><h1>Estoy roto</h1></>
+  return <>{trainer && <PokeCard idPokemon={trainer.id_pokemon}></PokeCard>}</>;
 }
 
 export default App;
