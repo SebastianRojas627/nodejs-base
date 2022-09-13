@@ -22,8 +22,8 @@ export const Login = () => {
   const dispatch = useDispatch();
   const formik = useFormik({
     initialValues: {
-      email: 'foobar@example.com',
-      password: 'foobar',
+      email: 'sebas@gmail.com',
+      password: 'password',
     },
     validationSchema: validationSchema,
     onSubmit: (values) => {
