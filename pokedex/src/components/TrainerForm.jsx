@@ -12,13 +12,13 @@ const validationSchema = yup.object({
 });
 
 export const TrainerForm = () => {
+  
 const createTrainer = async (body) => {
     const currentBody = {
         ...body,
         nombre: body.name
     }
-    debugger;
-    return await API.post('/trainer',currentBody);
+    return await API.post('/trainer', currentBody);
 }
   const formik = useFormik({
     initialValues: {
